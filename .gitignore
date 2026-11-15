@@ -1,0 +1,7 @@
+node_modules/
+.next/
+src/generated/prisma/
+.env*
+!.env.example
+*.log
+coverage/

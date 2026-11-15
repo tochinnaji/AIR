@@ -1,0 +1,7 @@
+[
+  {
+    "daysFromUploadingToHiding": 30,
+    "daysFromHidingToDeleting": 1,
+    "fileNamePrefix": "forme/postgres/"
+  }
+]
