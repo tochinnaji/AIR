@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import mammoth from "mammoth";
 import * as pdfjs from "pdfjs-dist/legacy/build/pdf.mjs";
 import { parseResumeText } from "@/lib/resume-import";
+import { MaliciousUploadError, scanUpload, UploadScannerUnavailableError } from "@/lib/upload-scan";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
@@ -12,6 +13,13 @@ export async function POST(request: Request) {
   if (file.size === 0 || file.size > 5 * 1024 * 1024) return NextResponse.json({ error: "Files must be smaller than 5 MB." }, { status: 413 });
   const ext = file.name.toLowerCase().split(".").pop();
   const bytes = Buffer.from(await file.arrayBuffer());
+  try {
+    await scanUpload(bytes);
+  } catch (error) {
+    if (error instanceof MaliciousUploadError) return NextResponse.json({ error: "This file failed the security scan. Choose a different file." }, { status: 422 });
+    if (error instanceof UploadScannerUnavailableError) return NextResponse.json({ error: "Secure file scanning is unavailable. Please try again later." }, { status: 503 });
+    return NextResponse.json({ error: "The file could not be security scanned. Please try again." }, { status: 503 });
+  }
   let text: string;
   if (ext === "pdf" && bytes.subarray(0, 5).toString() === "%PDF-") {
     try {

@@ -1,0 +1,7 @@
+services:
+  clamav:
+    image: clamav/clamav:stable
+    restart: unless-stopped
+    ports:
+      # Local app access only. Never publish clamd's unauthenticated port publicly.
+      - "127.0.0.1:3310:3310"

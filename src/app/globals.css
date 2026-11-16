@@ -39,9 +39,14 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .workspace { display:grid; grid-template-columns:216px minmax(340px,1fr) minmax(400px,46%); height:calc(100dvh - 68px); min-height:640px; }
 .rail { border-right:1px solid var(--line); background:var(--desk); padding:22px 13px; display:flex; flex-direction:column; gap:4px; min-width:0; }
 .rail-label { color:var(--slate); opacity:.75; text-transform:uppercase; font-size:10px; letter-spacing:1.1px; padding:17px 10px 8px; }
+.reorder-help { margin:0 9px 4px; color:var(--slate); font-size:10px; line-height:1.45; }
 .rail-item { width:100%; min-height:44px; text-align:left; display:flex; gap:10px; align-items:center; border:0; border-radius:5px; padding:8px 10px; color:var(--slate); background:transparent; font-size:13px; }
 .rail-item.active { background:#F7FAF7; color:var(--pine); font-weight:600; box-shadow:inset 2px 0 var(--pine); }
 .rail-item:hover { background:#F7FAF7; }
+.rail-item[draggable="true"] { cursor:grab; }
+.drag-hint { margin-left:7px; color:var(--slate); opacity:.65; }
+.drag-handle { cursor:grab; touch-action:none; }
+.drag-handle:active { cursor:grabbing; }
 .rail-icon { width:16px; text-align:center; font-size:13px; }
 .section-status { margin-left:auto; width:17px; height:17px; display:grid; place-items:center; color:#849087; font-size:11px; }
 .section-status.complete { color:var(--pine); }
@@ -74,6 +79,9 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .divider { border:0; border-top:1px solid var(--line); margin:22px 0; }
 .entry-card { border:1px solid #CCD5CE; border-radius:5px; padding:15px; background:var(--paper); margin:12px 0; }
 .entry-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:13px; color:var(--ink); font-size:13px; font-weight:600; }
+.entry-head[draggable="true"] { cursor:grab; }
+.entry-head[draggable="true"]:active { cursor:grabbing; }
+.entry-head:focus-visible { outline:3px solid var(--pine); outline-offset:2px; }
 .entry-actions { display:flex; gap:4px; }
 .icon-button { min-width:44px; min-height:44px; border:0; background:transparent; color:var(--slate); padding:4px 7px; border-radius:5px; }
 .icon-button:hover { background:#EEF2EE; color:var(--pine); }
@@ -120,11 +128,15 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .suggestion { border:1px solid var(--highlighter-edge); border-left:4px solid var(--highlighter-edge); border-radius:4px; padding:14px; margin:12px 0; background:var(--highlighter); }
 .suggestion p { margin:0 0 8px; color:var(--ink); font-size:14px; white-space:pre-wrap; }
 .suggestion small { display:block; color:#4E4A37; font-size:12px; margin-bottom:10px; }
+.suggestion .ai-evidence { border-top:1px solid #D9B13B; padding-top:8px; margin-top:4px; }
+.stream-preview { max-height:220px; overflow:auto; border:1px solid var(--line); border-radius:5px; margin-top:12px; padding:12px; background:var(--paper); color:var(--ink); font-size:12px; }
+.stream-preview p { margin:7px 0 0; white-space:pre-wrap; color:var(--slate); line-height:1.6; }
 .suggestion-actions { display:flex; gap:8px; flex-wrap:wrap; }
 .modal-actions { display:flex; justify-content:flex-end; gap:8px; margin-top:17px; }
 .toast { position:fixed; z-index:60; right:22px; bottom:22px; background:var(--ink); color:white; font-size:13px; padding:12px 16px; border-radius:5px; box-shadow:0 7px 24px #1B243024; }
 .tag-row { display:flex; flex-wrap:wrap; gap:6px; }
 .tag { display:inline-flex; align-items:center; gap:6px; border:1px solid #C7D1C9; background:var(--paper); padding:6px 9px; color:var(--ink); border-radius:4px; font-size:12px; }
+.tag-drag-handle { min-width:44px; min-height:44px; padding:0; border:0; background:transparent; color:var(--slate); font-size:14px; }
 .tag button { min-width:44px; min-height:44px; border:0; background:none; color:var(--slate); padding:0; }
 .import-drop { text-align:center; border:1px dashed #9CAC9E; border-radius:5px; background:#F7FAF7; padding:28px 16px; }
 .import-drop strong { display:block; font:600 17px var(--font-app); }

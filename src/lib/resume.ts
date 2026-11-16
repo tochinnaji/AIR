@@ -1,8 +1,10 @@
 export type Experience = { role: string; company: string; location: string; start: string; end: string; bullets: string[] };
 export type Education = { school: string; degree: string; location: string; start: string; end: string };
+export type ResumeSection = "summary" | "experience" | "education" | "skills" | "projects" | "extras";
 export type ResumeData = {
   id: string; title: string; fullName: string; role: string; email: string; phone: string; phoneCountryCode?: string; location: string; locationRegion?: string; website: string; isExample?: boolean; paperSize?: "a4" | "letter";
   summary: string; experience: Experience[]; education: Education[]; skills: string[]; projects: string[]; certifications: string[]; languages: string[];
+  sectionOrder: ResumeSection[];
   template: "classic" | "modern" | "compact"; accent: string; font: string; spacing: "comfortable" | "compact";
 };
 
@@ -14,7 +16,7 @@ export const initialResume: ResumeData = {
     { role: "Product Designer", company: "Fieldwork", location: "Remote", start: "2019", end: "2022", bullets: ["Designed end-to-end workflows for a B2B platform serving 12,000 monthly users.", "Introduced a research repository that helped product teams reuse customer insights across 6 launches."] }
   ],
   education: [{ school: "California College of the Arts", degree: "BFA, Interaction Design", location: "San Francisco, CA", start: "2015", end: "2019" }],
-  skills: ["Product strategy", "Interaction design", "Prototyping", "Figma", "User research", "Design systems"], projects: [], certifications: [], languages: ["English (Native)"], template: "classic", accent: "#1F5C4A", font: "source-serif", spacing: "comfortable", paperSize: "a4"
+  skills: ["Product strategy", "Interaction design", "Prototyping", "Figma", "User research", "Design systems"], projects: [], certifications: [], languages: ["English (Native)"], sectionOrder: ["summary", "experience", "education", "skills", "projects", "extras"], template: "classic", accent: "#1F5C4A", font: "source-serif", spacing: "comfortable", paperSize: "a4"
 };
 
 export const emptyExperience = (): Experience => ({ role: "", company: "", location: "", start: "", end: "", bullets: [""] });

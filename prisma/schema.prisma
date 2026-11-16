@@ -26,6 +26,7 @@ model User {
   paystackSubscriptionCode String?
   paystackEmailTokenEnc String?
   payments       Payment[]
+  aiUsageWindows AiUsageWindow[]
 }
 
 model Payment {
@@ -96,4 +97,13 @@ model ResumeVersion {
   createdAt DateTime @default(now())
   resume    Resume   @relation(fields: [resumeId], references: [id], onDelete: Cascade)
   @@index([resumeId, createdAt])
+}
+
+model AiUsageWindow {
+  userId      String
+  windowStart DateTime
+  count       Int      @default(0)
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@id([userId, windowStart])
+  @@index([windowStart])
 }
