@@ -50,7 +50,7 @@ export default function Home() {
   const draggedExperience = useRef<number | null>(null);
   const draggedEducation = useRef<number | null>(null);
   const draggedProject = useRef<number | null>(null);
-  const orderedSections = ["contact", ...normalizeSectionOrder(resume.sectionOrder)] as Section[];
+  const orderedSections: Array<"contact" | ResumeSection> = ["contact", ...normalizeSectionOrder(resume.sectionOrder)];
 
   useEffect(() => {
     try {
