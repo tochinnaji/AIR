@@ -31,6 +31,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .save-state { color:var(--slate); font-size:12px; display:flex; align-items:center; gap:7px; margin-right:6px; white-space:nowrap; }
 .save-dot { width:7px; height:7px; background:var(--pine); border-radius:50%; }
 .button { min-height:44px; display:inline-flex; align-items:center; justify-content:center; gap:8px; border:1px solid #BFC9C1; border-radius:5px; padding:9px 13px; background:var(--paper); color:var(--ink); font-size:13px; font-weight:600; transition:background-color .16s,border-color .16s,color .16s; }
+.button svg,.rail-icon svg,.save-indicator svg,.section-status svg { display:block; flex:0 0 auto; }
 .button:hover { border-color:var(--pine); background:#F4F7F4; }
 .button.primary { color:white; background:var(--pine); border-color:var(--pine); }
 .button.primary:hover { background:var(--pine-dark); border-color:var(--pine-dark); }
@@ -47,7 +48,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .drag-hint { margin-left:7px; color:var(--slate); opacity:.65; }
 .drag-handle { cursor:grab; touch-action:none; }
 .drag-handle:active { cursor:grabbing; }
-.rail-icon { width:16px; text-align:center; font-size:13px; }
+.rail-icon { width:16px; flex:0 0 16px; display:grid; place-items:center; text-align:center; font-size:13px; }
 .section-status { margin-left:auto; width:17px; height:17px; display:grid; place-items:center; color:#849087; font-size:11px; }
 .section-status.complete { color:var(--pine); }
 .progress-card { margin:auto 5px 0; border-top:1px solid #CFD7D0; padding:15px 7px 4px; background:transparent; }

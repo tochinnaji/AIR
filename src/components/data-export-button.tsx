@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import DownloadIcon from "@/components/ui/download-icon";
 
 export function DataExportButton({ className = "button" }: { className?: string }) {
   const [busy, setBusy] = useState(false);
@@ -29,5 +30,5 @@ export function DataExportButton({ className = "button" }: { className?: string 
     }
   };
 
-  return <span style={{ display: "inline-grid", gap: 4 }}><button className={className} disabled={busy} onClick={() => void download()}>{busy ? "Preparing download…" : "Download my data"}</button>{error && <span role="status" className="field-note">{error}</span>}</span>;
+  return <span style={{ display: "inline-grid", gap: 4 }}><button className={className} disabled={busy} onClick={() => void download()}><DownloadIcon size={16}/>{busy ? "Preparing download…" : "Download my data"}</button>{error && <span role="status" className="field-note">{error}</span>}</span>;
 }

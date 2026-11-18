@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Sun } from "lucide-react";
+import MoonIcon from "@/components/ui/moon-icon";
 
 const themeKey = "forme-theme";
 
@@ -21,7 +23,7 @@ export function ThemeToggle() {
   };
 
   return <button className="theme-toggle" type="button" onClick={toggle} aria-label={`Switch to ${dark ? "light" : "dark"} mode`} title={`Switch to ${dark ? "light" : "dark"} mode`}>
-    <span aria-hidden="true">{dark ? "☀" : "☾"}</span>
+    <span aria-hidden="true">{dark ? <Sun size={21} strokeWidth={1.9}/> : <MoonIcon size={22}/>}</span>
     <span className="theme-toggle-label">{dark ? "Light" : "Dark"}</span>
   </button>;
 }
