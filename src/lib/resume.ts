@@ -16,7 +16,7 @@ export const initialResume: ResumeData = {
     { role: "Product Designer", company: "Fieldwork", location: "Remote", start: "2019", end: "2022", bullets: ["Designed end-to-end workflows for a B2B platform serving 12,000 monthly users.", "Introduced a research repository that helped product teams reuse customer insights across 6 launches."] }
   ],
   education: [{ school: "California College of the Arts", degree: "BFA, Interaction Design", location: "San Francisco, CA", start: "2015", end: "2019" }],
-  skills: ["Product strategy", "Interaction design", "Prototyping", "Figma", "User research", "Design systems"], projects: [], certifications: [], languages: ["English (Native)"], sectionOrder: ["summary", "experience", "education", "skills", "projects", "extras"], template: "classic", accent: "#1F5C4A", font: "source-serif", spacing: "comfortable", paperSize: "a4"
+  skills: ["Product strategy", "Interaction design", "Prototyping", "Figma", "User research", "Design systems"], projects: [], certifications: [], languages: ["English (Native)"], sectionOrder: ["summary", "experience", "education", "skills", "projects", "extras"], template: "classic", accent: "#1F2937", font: "source-serif", spacing: "comfortable", paperSize: "a4"
 };
 
 export const emptyExperience = (): Experience => ({ role: "", company: "", location: "", start: "", end: "", bullets: [""] });
