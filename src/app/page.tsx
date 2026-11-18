@@ -285,7 +285,7 @@ export default function Home() {
   return <>
     <header className="topbar">
       <div style={{ display:"flex", alignItems:"center" }}><div className="brand"><span className="brand-mark" aria-hidden="true">f</span> forme</div><span className="crumbs">My resumes　/　{resume.title}</span></div>
-      <div className="top-actions">
+      <div className="top-actions" onWheel={(event) => { if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) { event.currentTarget.scrollLeft += event.deltaY; event.preventDefault(); } }}>
         <ThemeToggle/>
         <span className="save-state" role="status" aria-live="polite"><span className="save-indicator" aria-hidden="true">{!saved || syncState === "error" ? <i className="save-dot" style={{ background:syncState === "error" ? "var(--brick)" : undefined }} /> : <CheckedIcon size={14} color="var(--success)" aria-hidden="true"/>}</span>{!saved ? "Saving…" : accountSession ? syncState === "error" ? "Sync needs attention" : syncState === "saving" ? "Syncing…" : syncState === "synced" ? "Saved" : "Local draft saved" : "Saved on this device"}</span>
         <a className="button small" href="/privacy">Privacy</a>
@@ -294,8 +294,8 @@ export default function Home() {
         <button className="button small" onClick={startBlank}>New resume</button>
         <button className="button small" onClick={() => setModal("share")}><LinkIcon size={15}/>Share</button>
         <button className="button small" onClick={addVersion}><HistoryCircleIcon size={15}/>Save version</button>
-        <button className="button small" onClick={() => void exportDocx()}><DownloadIcon size={15}/>Export DOCX</button>
-        <button className="button small" onClick={() => void exportPdf()}><DownloadIcon size={15}/>Export PDF</button>
+        <button className="button small toolbar-export" aria-label="Export as DOCX" title="Export as DOCX" onClick={() => void exportDocx()}><DownloadIcon size={15}/>DOCX</button>
+        <button className="button small toolbar-export" aria-label="Export as PDF" title="Export as PDF" onClick={() => void exportPdf()}><DownloadIcon size={15}/>PDF</button>
         <button className="button primary small" onClick={() => setModal("account")}>{accountSession ? "Account" : "Sign in"}</button>
       </div>
     </header>

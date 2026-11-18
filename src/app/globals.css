@@ -24,9 +24,11 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .brand { display:flex; align-items:center; gap:10px; font:600 18px Arial,Helvetica,sans-serif; letter-spacing:-.5px; white-space:nowrap; }
 .brand-mark { width:28px; height:28px; display:grid; place-items:center; color:#fff; background:var(--primary); border-radius:4px; font:italic 17px Georgia,serif; }
 .crumbs { color:var(--slate); font-size:12px; margin-left:24px; max-width:240px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.topbar>div:first-child { display:flex; align-items:center; min-width:0; }
-.top-actions { display:flex; align-items:center; gap:7px; }
-.top-actions .button { height:64px; min-height:64px; padding-block:7px; line-height:1.2; text-align:center; }
+.topbar>div:first-child { display:flex; align-items:center; min-width:0; flex:0 1 auto; }
+.top-actions { display:flex; align-items:center; gap:7px; flex:1 1 auto; min-width:0; max-width:100%; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; }
+.top-actions::-webkit-scrollbar { display:none; width:0; height:0; }
+.top-actions .button { flex:0 0 auto; height:52px; min-height:52px; max-height:52px; padding:7px 10px; line-height:1.2; text-align:center; white-space:nowrap; }
+.top-actions .toolbar-export { width:116px; }
 .theme-toggle { position:fixed; right:22px; bottom:22px; z-index:45; width:48px; height:48px; min-height:48px; display:grid; place-items:center; padding:0; border:1px solid var(--line); border-radius:50%; background:var(--paper); color:var(--primary-text); box-shadow:0 3px 12px #0F172A22; font-size:22px; transition:background-color .16s,border-color .16s,color .16s,transform .16s; }
 .theme-toggle span:first-child { font-size:22px; line-height:1; }
 .theme-toggle-label { display:none; }
@@ -198,13 +200,14 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 [data-theme="dark"] .suggestion small { color:var(--slate); }
 [data-theme="dark"] .tag.warning { color:#FCD34D; background:color-mix(in srgb,var(--warning) 14%,var(--paper)); border-color:color-mix(in srgb,var(--warning) 48%,var(--line)); }
 [data-theme="dark"] .resume-page { color:var(--resume-ink); }
-@media(max-width:1180px) and (min-width:851px) { .workspace { grid-template-columns:185px minmax(290px,1fr) minmax(350px,42%); } .topbar { padding:0 16px; } .top-actions { gap:4px; } .top-actions .button.small { padding-inline:8px; } }
+@media(max-width:1180px) and (min-width:851px) { .workspace { grid-template-columns:185px minmax(290px,1fr) minmax(350px,42%); } .topbar { padding:0 16px; gap:10px; } .crumbs { display:none; } .top-actions { gap:4px; } .top-actions .button.small { padding-inline:8px; } }
 @media(max-width:850px) {
   .topbar { min-height:62px; height:auto; padding:8px 14px; flex-wrap:wrap; gap:7px; position:relative; }
   .topbar>div:first-child { width:100%; }
   .crumbs { display:none; }
-  .top-actions { width:100%; overflow-x:auto; justify-content:flex-start; gap:6px; padding:0 0 2px; }
-  .top-actions .button { flex:0 0 auto; height:44px; min-height:44px; white-space:nowrap; }
+  .top-actions { width:100%; flex:0 0 100%; overflow-x:auto; justify-content:flex-start; gap:6px; padding:0 0 2px; }
+  .top-actions .button { flex:0 0 auto; height:44px; min-height:44px; max-height:44px; white-space:nowrap; }
+  .top-actions .toolbar-export { width:96px; }
   .save-state { margin-right:4px; }
   .mobile-tabs { display:grid; grid-template-columns:1fr 1fr; min-height:48px; background:var(--paper); border-bottom:1px solid var(--line); }
   .mobile-tabs button { min-height:48px; border:0; border-bottom:2px solid transparent; background:transparent; color:var(--slate); font-weight:600; }
