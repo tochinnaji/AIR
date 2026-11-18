@@ -162,7 +162,14 @@ export default function Home() {
       return false;
     } catch { showToast("Could not check export access. Your resume is unchanged."); return false; }
   };
-  const exportPdf = async () => { if (await authorizeExport()) window.print(); };
+  const exportPdf = async () => {
+    if (!(await authorizeExport())) return;
+    if (showDashboard) {
+      setShowDashboard(false);
+      await new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+    }
+    window.print();
+  };
   const applySuggestion = (text: string) => {
     if (aiKind === "cover-letter") setCoverLetter(text);
     else if (aiTarget) setResume((current) => ({ ...current, experience: current.experience.map((entry, i) => i === aiTarget.experience ? { ...entry, bullets: entry.bullets.map((bullet, b) => b === aiTarget.bullet ? text : bullet) } : entry) }));

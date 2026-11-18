@@ -10,7 +10,7 @@ A Next.js and TypeScript resume builder built from the requirements in the suppl
 - Consent-gated AI rewriting endpoint. Suggestions use structured JSON, Zod validation, short-term rate limiting and a strict no-invention instruction. Original text changes only after the user selects a suggestion.
 - Job-description keyword comparison, fact-preserving bullet suggestions, cover-letter drafting, plain-text and DOCX export, drag ordering for experience entries, version checkpoints, and revocable public links.
 - Postgres and Prisma models for user accounts, resumes and resume versions; Auth.js credential and Google providers; authenticated resume APIs, account deletion, privacy notice, and account data export.
-- Paystack checkout offers: one PDF/DOCX export trial then ₦1,500 one-time unlimited exports, and one successful AI rewrite trial then ₦3,000/month AI subscription (20 requests per minute). Server-side payment verification, HMAC-verified webhook handling, and subscription cancellation are included.
+- Paystack checkout offers: one PDF/DOCX export trial then ₦1,500 one-time unlimited exports, and one successful AI rewrite trial then ₦3,000/month AI subscription (20 requests per minute). Server-side payment verification, HMAC-verified webhook handling, and subscription cancellation are included. The test secret was validated and the ₦3,000 monthly test plan is configured locally; the checkout, webhook, renewal, and cancellation flows still need end-to-end testing against the deployed test endpoint before any live payments.
 - Encrypted PostgreSQL backups prepared for Backblaze B2, with a 30-day lifecycle rule; B2 credentials, Hostless scheduling, and restore drill are not activated yet.
 
 ## Run locally
@@ -26,7 +26,7 @@ The editor can be explored with sample content and local browser autosave. Accou
 
 ## Delivery sequence
 
-The MVP foundation is in place: structured editing, fact-only AI suggestions, selectable-text PDF export, file import, autosave, accounts, and ATS-focused templates. Phase 2 includes job matching and edits, cover-letter drafts, DOCX and plain-text export, entry ordering, version restore, and public share links. Paystack offers are coded but checkout remains unavailable until test keys, monthly plan code, and the database schema update are configured. AI checkout remains default-off until Gemini is configured and verified.
+The MVP foundation is in place: structured editing, fact-only AI suggestions, selectable-text PDF export, file import, autosave, accounts, and ATS-focused templates. Phase 2 includes job matching and edits, cover-letter drafts, DOCX and plain-text export, entry ordering, version restore, and public share links. Paystack test credentials and the monthly test plan are configured in the local ignored `.env.local`; checkout still needs deployed end-to-end verification, and separate live-mode configuration must wait until launch approval. AI checkout stays disabled by default in `.env.example`.
 
 The local ClamAV Compose service is for local development only. For production, deploy the scanner gateway as an HTTPS service and keep ClamAV on its private container network. Set `CLAMAV_SCAN_URL` to the gateway's HTTPS `/scan` URL and `CLAMAV_SCAN_TOKEN` as a secret in Vercel and the gateway. Never expose ClamAV's unauthenticated TCP port directly to the public internet. The production scanner still needs a host and deployment credentials before it can be reachable.
 

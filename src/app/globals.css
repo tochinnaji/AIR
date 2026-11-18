@@ -246,6 +246,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
   .topbar,.rail,.editor,.preview-toolbar,.mobile-tabs,.dashboard { display:none!important; }
   .workspace { display:block; height:auto; min-height:0; }
   .preview-pane { border:0; background:#fff; display:block; }
+  .workspace.mobile-edit .preview-pane,.workspace.mobile-preview .preview-pane { display:block!important; min-height:0; }
   .preview-scroll { padding:0; overflow:visible; }
   .resume-page { width:210mm; min-height:297mm; padding:17mm; margin:0; box-shadow:none; print-color-adjust:exact; -webkit-print-color-adjust:exact; }
   .resume-page.letter { width:8.5in; min-height:11in; page:resume-letter; padding:.65in .7in; }

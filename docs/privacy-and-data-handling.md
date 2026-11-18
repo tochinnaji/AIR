@@ -23,6 +23,9 @@ Forme to the public.
 - AI requests require an explicit per-request consent checkbox.
 - Imported files have type and size checks and are not retained by that route.
 - Public share links can be revoked.
+- The operator confirms Hostless database data-at-rest encryption has been
+  checked. The operator also confirms the Gemini free-tier data-use question
+  has been reviewed; the notice continues to disclose the provider's stated use.
 - A Backblaze B2-compatible encrypted off-site backup job and 30-day lifecycle
   rule example are prepared in `ops/database-backup/`; bucket, secrets, schedule,
   and restore drill still need activation.

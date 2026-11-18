@@ -7,7 +7,8 @@ export const metadata = {
 };
 
 export default function PrivacyPage() {
-  const privacyEmail = process.env.NEXT_PUBLIC_PRIVACY_EMAIL;
+  const privacyEmail = process.env.NEXT_PUBLIC_PRIVACY_EMAIL || "privacy@example.com";
+  const privacyEmailIsPlaceholder = !process.env.NEXT_PUBLIC_PRIVACY_EMAIL;
   return <main className="dashboard" style={{ maxWidth: 900, margin: "0 auto", lineHeight: 1.7 }}>
     <Link href="/" className="signin-back">← Back to Forme</Link>
     <div className="eyebrow" style={{ marginTop: 24 }}>Privacy</div>
@@ -40,7 +41,7 @@ export default function PrivacyPage() {
 
     <h2>Your choices and requests</h2>
     <p>You can correct resume fields in the editor, download account and resume data while signed in, turn off a public link, or delete your account from the account menu. You may also ask to access, correct, export, object to, or delete personal data, subject to applicable legal requirements. You may contact the Nigeria Data Protection Commission or your local data protection authority if you believe your rights have not been respected.</p>
-    <p>Privacy requests: {privacyEmail ? <a href={`mailto:${privacyEmail}`}>{privacyEmail}</a> : "A privacy contact email must be configured before public launch."}</p>
+    <p>Privacy requests: <a href={`mailto:${privacyEmail}`}>{privacyEmail}</a>{privacyEmailIsPlaceholder && <small> (temporary placeholder; replace with a monitored address before launch)</small>}</p>
 
     <h2>Changes to this notice</h2>
     <p>Forme will update this notice when its data practices or providers change and show the new effective date.</p>

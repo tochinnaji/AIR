@@ -28,10 +28,13 @@ production secret settings.
 
 ## Still to confirm
 
-- Create and configure a ₦3,000 monthly Paystack plan; set its plan code as
-  `PAYSTACK_AI_PLAN_CODE` and confirm its currency/amount match the app.
-- Add Paystack test credentials to the local secret file without sharing them
-  in chat. Configure webhook `/api/billing/webhook` in the Paystack dashboard.
+- Done locally: the Paystack test secret was validated and a ₦3,000/month NGN
+  test plan was created; its plan code is stored in ignored `.env.local`.
+- Still required: add test credentials and the test plan code to a Vercel Preview
+  environment, configure its HTTPS `/api/billing/webhook` endpoint in Paystack
+  Test Mode, and verify checkout, webhook fulfillment, renewal, and cancellation.
+- Keep live credentials and live checkout disabled until those test flows pass
+  and the owner explicitly prepares the live launch.
 - AI checkout has a default-off `PAYSTACK_AI_BILLING_ENABLED` switch. Keep it
   false until the AI provider is reliably configured and tested, the plan is
   verified at ₦3,000/month, and renewal/cancellation webhooks are confirmed.
